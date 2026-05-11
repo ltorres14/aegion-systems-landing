@@ -1,0 +1,65 @@
+{
+  "businessName": "Aegion Systems",
+  "domain": "aegionsystems.apicore.com",
+  "whatsappNumber": "5210000000000",
+  "whatsappMessage": "Hola, me interesa una cotizacion para mejorar la seguridad y conectividad de mi hogar o negocio.",
+  "heroTitle": "Tecnologia moderna para proteger, conectar y mejorar tu espacio.",
+  "heroSubtitle": "Soluciones de conectividad, videovigilancia y soporte tecnologico para hogares y negocios en Nuevo Leon.",
+  "services": [
+    {
+      "title": "Videovigilancia y monitoreo",
+      "description": "Instalacion de camaras, monitoreo remoto y configuracion movil.",
+      "icon": "camera"
+    },
+    {
+      "title": "Redes y conectividad",
+      "description": "Mejora de senal WiFi, repetidores, routers y conectividad basica.",
+      "icon": "wifi"
+    },
+    {
+      "title": "Configuracion segura",
+      "description": "Cambio de contrasenas, accesos seguros y proteccion basica de cuentas.",
+      "icon": "shield"
+    },
+    {
+      "title": "Soporte tecnologico",
+      "description": "Diagnostico, mantenimiento y asistencia tecnica para hogares y negocios.",
+      "icon": "headphones"
+    }
+  ],
+  "serviceGallery": [
+    {
+      "title": "Instalacion profesional",
+      "caption": "Trabajo ordenado y confiable para hogares y negocios.",
+      "image": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "title": "Conectividad estable",
+      "caption": "Mejoramos red, senal y cobertura para uso diario.",
+      "image": "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "title": "Soporte cercano",
+      "caption": "Asesoria clara, configuracion y seguimiento personalizado.",
+      "image": "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80"
+    }
+  ],
+  "clientWorkSection": {
+    "title": "Trabajos realizados",
+    "subtitle": "Seccion lista para agregar fotos reales del cliente y mostrar instalaciones, configuraciones y soporte realizado.",
+    "emptyMessage": "Aqui podras agregar fotos reales de servicios terminados. Solo necesitas actualizar el arreglo clientWorkPhotos en este mismo archivo."
+  },
+  "clientWorkPhotos": [],
+  "coverageCities": [
+    "Monterrey",
+    "Guadalupe",
+    "San Nicolas",
+    "Apodaca",
+    "Escobedo",
+    "Santa Catarina",
+    "San Pedro",
+    "Juarez",
+    "Garcia",
+    "y mas zonas"
+  ]
+}
