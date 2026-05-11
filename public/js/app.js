@@ -211,6 +211,7 @@ function renderClientWork(sectionConfig, photos) {
   const title = document.getElementById("client-work-title");
   const subtitle = document.getElementById("client-work-subtitle");
   const grid = document.getElementById("client-work-grid");
+  const dots = document.getElementById("client-work-dots");
 
   if (!grid) {
     return;
@@ -225,9 +226,12 @@ function renderClientWork(sectionConfig, photos) {
   }
 
   grid.innerHTML = "";
+  if (dots) {
+    dots.innerHTML = "";
+  }
 
   if (!photos || photos.length === 0) {
-    for (let index = 0; index < 3; index += 1) {
+    for (let index = 0; index < 6; index += 1) {
       const placeholder = document.createElement("article");
       placeholder.className = "client-work-card client-work-placeholder";
       placeholder.innerHTML = `
@@ -239,21 +243,100 @@ function renderClientWork(sectionConfig, photos) {
       `;
       grid.appendChild(placeholder);
     }
+  } else {
+    photos.forEach((photo) => {
+      const card = document.createElement("article");
+      card.className = "client-work-card";
+      card.innerHTML = `
+        <img src="${photo.image}" alt="${photo.title}" loading="lazy" />
+        <div class="client-work-card-body">
+          <h3>${photo.title}</h3>
+          <p>${photo.caption ?? ""}</p>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  const slides = Array.from(grid.children);
+  if (!slides.length) {
     return;
   }
 
-  photos.forEach((photo) => {
-    const card = document.createElement("article");
-    card.className = "client-work-card";
-    card.innerHTML = `
-      <img src="${photo.image}" alt="${photo.title}" loading="lazy" />
-      <div class="client-work-card-body">
-        <h3>${photo.title}</h3>
-        <p>${photo.caption ?? ""}</p>
-      </div>
-    `;
-    grid.appendChild(card);
+  let currentIndex = 0;
+  let intervalId = null;
+
+  function getVisibleCount() {
+    if (window.innerWidth <= 640) {
+      return 1;
+    }
+    if (window.innerWidth <= 1100) {
+      return 2;
+    }
+    return 2;
+  }
+
+  function getMaxIndex() {
+    return Math.max(slides.length - getVisibleCount(), 0);
+  }
+
+  function renderDots() {
+    if (!dots) {
+      return;
+    }
+
+    dots.innerHTML = "";
+    const totalDots = getMaxIndex() + 1;
+
+    for (let index = 0; index < totalDots; index += 1) {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = `client-work-dot${index === currentIndex ? " is-active" : ""}`;
+      dot.setAttribute("aria-label", `Ir al trabajo ${index + 1}`);
+      dot.addEventListener("click", () => {
+        currentIndex = index;
+        updateCarousel();
+        startAutoAdvance();
+      });
+      dots.appendChild(dot);
+    }
+  }
+
+  function updateCarousel() {
+    const maxIndex = getMaxIndex();
+    currentIndex = Math.min(currentIndex, maxIndex);
+
+    const firstSlide = slides[0];
+    const slideStyles = window.getComputedStyle(grid);
+    const gap = Number.parseFloat(slideStyles.columnGap || slideStyles.gap || "0");
+    const offset = (firstSlide.offsetWidth + gap) * currentIndex;
+    grid.style.transform = `translateX(-${offset}px)`;
+    renderDots();
+  }
+
+  function startAutoAdvance() {
+    if (intervalId) {
+      window.clearInterval(intervalId);
+    }
+
+    if (getMaxIndex() <= 0) {
+      return;
+    }
+
+    intervalId = window.setInterval(() => {
+      const maxIndex = getMaxIndex();
+      currentIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1;
+      updateCarousel();
+    }, 2800);
+  }
+
+  window.addEventListener("resize", () => {
+    updateCarousel();
+    startAutoAdvance();
   });
+
+  updateCarousel();
+  startAutoAdvance();
 }
 
 async function loadSiteContent() {
