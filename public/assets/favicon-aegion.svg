@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="aegionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#CDE4EC" />
+      <stop offset="100%" stop-color="#A7B8C9" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="#F7F9FB" />
+  <path
+    d="M32 8 48 18v12c0 11.8-7.7 19.6-16 26-8.3-6.4-16-14.2-16-26V18L32 8Z"
+    fill="url(#aegionGradient)"
+    stroke="#2D3748"
+    stroke-opacity=".08"
+  />
+  <path
+    d="M32 17 42.5 43h-6.3l-1.8-4.9h-4.9L27.7 43h-6.2L32 17Zm0 10.1-2.6 6.7h5.2L32 27.1Z"
+    fill="#2D3748"
+  />
+</svg>
