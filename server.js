@@ -22,6 +22,6 @@ app.get("*", (_req, res) => {
   res.sendFile(path.join(publicDir, "index.html"));
 });
 
-app.listen(PORT, () => {
-  console.log(`Aegion Systems landing disponible en http://localhost:${PORT}`);
+app.listen(PORT, "127.0.0.1", () => {
+  console.log(`Aegion Systems landing disponible en http://127.0.0.1:${PORT}`);
 });
